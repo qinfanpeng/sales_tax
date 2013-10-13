@@ -1,8 +1,11 @@
 class Receipt
   attr_accessor :total_taxs, :total_payment_amount
+  attr_reader :items
 
   def initialize(items)
     @items = items
+    @total_taxs = 0.0
+    @total_payment_amount = 0.0
   end
 
   def show

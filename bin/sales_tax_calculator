@@ -1,21 +1,26 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 require_relative '../lib/sales_tax'
+require 'colorize'
 
 puts 'Welcome to use sales taxs calculator'
-puts "Please enter some items(e.g '1 book at 12.49')，separated by 'Enter', end with 'End'"
+puts "Please enter some items(e.g '1 book at 12.49')"
+puts "to comprise of oder, separated by 'Enter', end with 'End'"
 
-calculator = SalesTaxCalculator.new
-_items = []
+order_parser = OrderParser.new
+contents = []
 
 while (input = gets.chomp) != 'End' do
-  _items << input unless input.empty?
+  contents << input unless input.empty?
 end
 
-puts '------output----------'
-calculator.items = _items
-puts calculator.run
+order = order_parser.parse(contents)
+receipt = order.check_out
 
-until gets == 'Exit' do
-  exit
-end
+#puts '----------------order----------------------'.green
+#puts order.show
+
+puts '----------------receipt--------------------'.green
+puts receipt.show
+
+exit

@@ -3,7 +3,7 @@ require 'factory_girl'
 FactoryGirl.define do
 
   factory :product do
-    name 'test_product'
+    name '1 test_product'
     price 10
     type 'other'
     is_imported false
@@ -12,6 +12,11 @@ FactoryGirl.define do
       type 'book'
     end
     factory :imported_product do
+      is_imported true
+    end
+
+    factory :imported_exempt_product do
+      type 'book'
       is_imported true
     end
 
@@ -24,6 +29,17 @@ FactoryGirl.define do
   end
 
   factory :order do
+    after(:build) do |order|
+      order << build(:item)
+    end
+    after(:create) do |order|
+      order << build(:item)
+    end
+  end
+
+  factory :receipt do
+    item = build(:item)
+    initialize_with { new([item]) }
   end
 
 

@@ -3,7 +3,7 @@ require 'singleton'
 class SalesTaxPolicy
   include Singleton
 
-  attr_accessor :basic_sales_tax_rate, :imported_sales_tax_rake, :exempt_product_types
+  attr_accessor :basic_sales_tax_rate, :imported_sales_tax_rate, :exempt_product_types
 
   def initialize
     @basic_sales_tax_rate = 0.1
@@ -11,11 +11,11 @@ class SalesTaxPolicy
     @exempt_product_types = %w[book food medical]
   end
 
-  def self.add_exempt_product_type(exempt_product_type)
+  def add_exempt_product_type(exempt_product_type)
     @exempt_product_types << exempt_product_type
   end
 
-  def self.remove_exempt_product_type(exempt_product_type)
+  def remove_exempt_product_type(exempt_product_type)
     @exempt_product_types.delete exempt_product_type
   end
 

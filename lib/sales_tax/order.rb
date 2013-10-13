@@ -35,7 +35,7 @@ class Order
   def show
     result = []
     @items.each do |item|
-      result << "#{item.quantity} #{item.product_name} at #{'%.2f' % item.product_price}"
+      result << "#{item.product_name} at #{'%.2f' % item.product_price}"
     end
     return result
   end
