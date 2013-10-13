@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+require_relative '../lib/sales_tax'
+
+puts 'Welcome to use sales taxs calculator'
+puts "Please enter some items(e.g '1 book at 12.49')，separated by 'Enter', end with 'End'"
+
+calculator = SalesTaxCalculator.new
+_items = []
+
+while (input = gets.chomp) != 'End' do
+  _items << input unless input.empty?
+end
+
+puts '------output----------'
+calculator.items = _items
+puts calculator.run
+
+until gets == 'Exit' do
+  exit
+end
