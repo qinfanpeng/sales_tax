@@ -15,6 +15,7 @@ class OrderParser
     return order
   end
 
+  private
   def quantity_in(content)
     content.split[0].to_i
   end

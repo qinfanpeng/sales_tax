@@ -15,11 +15,10 @@ while (input = gets.chomp) != 'End' do
 end
 
 order = order_parser.parse(contents)
+puts '----------------order----------------------'.green
+puts order.show
+
 receipt = order.check_out
-
-#puts '----------------order----------------------'.green
-#puts order.show
-
 puts '----------------receipt--------------------'.green
 puts receipt.show
 
