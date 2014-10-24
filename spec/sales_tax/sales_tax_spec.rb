@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SalesTaxCalculator do
+describe 'SalesTax' do
   let(:order_parser) { OrderParser.new }
 
   describe 'only one' do
